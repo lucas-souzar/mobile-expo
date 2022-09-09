@@ -1,49 +1,62 @@
-import React, { useState } from 'react';
-import { Feather as Icon } from '@expo/vector-icons';
-import { View, Text, Image, ImageBackground, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
-import { RectButton, TextInput } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState } from "react";
+import { Feather as Icon } from "@expo/vector-icons";
+import {
+  View,
+  Text,
+  Image,
+  ImageBackground,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
+import { RectButton, TextInput } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
-  const [city, setCity] = useState('');
-  const [uf, setUf] = useState('');
+  const [city, setCity] = useState("");
+  const [uf, setUf] = useState("");
 
   const navigation = useNavigation();
 
   function handleNavigateToPoints() {
-    navigation.navigate('Points', {
+    navigation.navigate("Points", {
       uf,
-      city
+      city,
     });
   }
 
   return (
-    <KeyboardAvoidingView 
-      style={{ flex: 1 }} 
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
-      <ImageBackground 
-        source={require('../../assets/home-background.png')} 
+      <ImageBackground
+        source={require("../../assets/home-background.png")}
         style={styles.container}
         imageStyle={{ width: 275, height: 368 }}
       >
         <View style={styles.main}>
-          <Image source={require('../../assets/logo.png')} />
+          <Image source={require("../../assets/logo.png")} />
           <View>
-            <Text style={styles.title}>Seu marketplace de coleta de resíduos</Text>
-            <Text style={styles.description}>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.</Text>
+            <Text style={styles.title}>
+              Seu marketplace de coleta de resíduos
+            </Text>
+            <Text style={styles.description}>
+              Ajudamos pessoas a encontrarem pontos de coleta de forma
+              eficiente.
+            </Text>
           </View>
         </View>
 
         <View style={styles.footer}>
-          <TextInput 
+          <TextInput
             style={styles.input}
             placeholder="Digite a UF"
             value={uf}
             onChangeText={setUf}
           />
 
-          <TextInput 
+          <TextInput
             style={styles.input}
             placeholder="Digite a cidade"
             value={city}
@@ -53,13 +66,11 @@ const Home = () => {
           <RectButton style={styles.button} onPress={handleNavigateToPoints}>
             <View style={styles.buttonIcon}>
               <Text>
-                <Icon name="arrow-right" color="#fff" size={24}/>
+                <Icon name="arrow-right" color="#fff" size={24} />
               </Text>
             </View>
 
-            <Text style={styles.buttonText}>
-              Entrar
-            </Text>
+            <Text style={styles.buttonText}>Entrar</Text>
           </RectButton>
         </View>
       </ImageBackground>
@@ -75,22 +86,22 @@ const styles = StyleSheet.create({
 
   main: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 
   title: {
-    color: '#322153',
+    color: "#322153",
     fontSize: 32,
-    fontFamily: 'Ubuntu_700Bold',
+    fontFamily: "Ubuntu_700Bold",
     maxWidth: 260,
     marginTop: 64,
   },
 
   description: {
-    color: '#6C6C80',
+    color: "#6C6C80",
     fontSize: 16,
     marginTop: 16,
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: "Roboto_400Regular",
     maxWidth: 260,
     lineHeight: 24,
   },
@@ -101,7 +112,7 @@ const styles = StyleSheet.create({
 
   input: {
     height: 60,
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
     borderRadius: 10,
     marginBottom: 8,
     paddingHorizontal: 24,
@@ -109,31 +120,31 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: '#34CB79',
+    backgroundColor: "#34CB79",
     height: 60,
-    flexDirection: 'row',
+    flexDirection: "row",
     borderRadius: 10,
-    overflow: 'hidden',
-    alignItems: 'center',
+    overflow: "hidden",
+    alignItems: "center",
     marginTop: 8,
   },
 
   buttonIcon: {
     height: 60,
     width: 60,
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
-    justifyContent: 'center',
-    alignItems: 'center'
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   buttonText: {
     flex: 1,
-    justifyContent: 'center',
-    textAlign: 'center',
-    color: '#FFF',
-    fontFamily: 'Roboto_500Medium',
+    justifyContent: "center",
+    textAlign: "center",
+    color: "#FFF",
+    fontFamily: "Roboto_500Medium",
     fontSize: 16,
-  }
+  },
 });
 
 export default Home;
